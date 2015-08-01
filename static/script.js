@@ -1,0 +1,9 @@
+$("#logIn").click(function(){
+	window.location.replace("login.html");
+}
+$("#signUpButton").click(function(){
+	window.location.replace("signup.html");
+}
+$("#viewMap").click(function(){
+	window.location.replace("viewmap.html");
+}
