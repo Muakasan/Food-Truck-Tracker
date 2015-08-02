@@ -7,6 +7,10 @@ def home():
     #return 'Index page'
     return render_template('index.html')
 
+@app.route('/home')
+def returnHome():
+    return render_template('index.html');
+
 @app.route('/map')
 def map():
     return render_template('map.html');
