@@ -1,9 +1,9 @@
-$("#logInButton").click(function(){
-	window.location.replace("login.html");
+$("#log-in-button").click(function(){
+	window.location.replace("../templates/login.html");
 }
-$("#signUpButton").click(function(){
-	window.location.replace("signup.html");
+$("#sign-up-button").click(function(){
+	window.location.replace("../templates/signup.html");
 }
-$("#viewMapButton").click(function(){
-	window.location.replace("viewmap.html");
+$("#view-map-button").click(function(){
+	window.location.replace("../templates/viewmap.html");
 }
