@@ -1,4 +1,4 @@
-<script type=text/javascript src="{{url_for('static', filename='') }}"></script>
+<script type=text/javascript src="{{url_for('static', filename='ajax.js') }}"></script>
 
 $(function() {
   $().bind('click', function() {
