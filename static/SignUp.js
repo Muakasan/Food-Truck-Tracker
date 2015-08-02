@@ -1,5 +1,6 @@
 $("#submit-button").click(function(){
 	if ($("#password-input").val()===$("#confirm-password-input").val()){
+
 	/*
 	$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 	$.getJSON('_create_user', {
@@ -17,7 +18,15 @@ $("#submit-button").click(function(){
         	description: $("#description-input").val()
         }),        
         contentType: 'application/json;charset=UTF-8',
-        success: function(data){alert(data);},
+        success: function(data){
+        	alert(data);
+        	$.initNameSpaceStorage("food-truck-finder"):
+        	storage - $.localStorage;
+        	storage.set("username", username)
+        	storage.remove("username")
+        	storage.get("get")
+
+        },
         failure: function(errMsg) {
             alert(errMsg);
         }});
