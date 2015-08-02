@@ -70,40 +70,8 @@
                     });
                 }   
                 //console.log(initialLocation);
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(39, -77),
-                    map: map,
-                    title: 'sdhfaioha'
-                });
-                var contentString = '<div id="content">'+
-                    '<div id="siteNotice">'+
-                    '</div>'+
-                    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-                    '<div id="bodyContent">'+
-                    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-                    'sandstone rock formation in the southern part of the '+
-                    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-                    'south west of the nearest large town, Alice Springs; 450&#160;km '+
-                    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-                    'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-                    'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-                    'Aboriginal people of the area. It has many springs, waterholes, '+
-                    'rock caves and ancient paintings. Uluru is listed as a World '+
-                    'Heritage Site.</p>'+
-                    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-                    'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-                    '(last visited June 22, 2009).</p>'+
-                    '</div>'+
-                    '</div>';    
-                var infoWindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-                google.maps.event.addListener(marker, 'click', function() {
-                    infoWindow.open(map,marker);
-                });
           
             }
-            google.maps.event.addDomListener(window, 'load', initialize);
             /*
             $(document).ready(function() {
                 alert('lel')
@@ -121,7 +89,7 @@
             });
             */
             
-              $(document).ready(function() {
+             $(document).ready(function() {
                 alert('lel')
                 var request = $.ajax({
                     type: "POST",
@@ -133,17 +101,35 @@
                 request.done(function(JSON_array_string) {
                     //alert(JSON_array);
                     array_data = JSON.parse(JSON_array_string)
-                    //alert(array_data)
-                    /*
+
                     for(i=0; i<array_data.length; i++)
                     {
                         alert(array_data[i]["food_truck_name"])
                     }
-                    */
                     //from here you have your array to play with
-                });
+                    for(i=0;i<array_data.length;i++)
+                    {
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(array_dat[i]['x'], array_data[i]['y']),
+                            map: map,
+                            title: 'sdhfaioha'
+                        });
+                        var contentString = '<div id="content">'+
+                            '<div id="siteNotice">'+
+                            '</div>'+
+                            '<h1 id="firstHeading" class="firstHeading">' + array_data[i]['food_truck_name'] + '</h1>'+
+                            '<div id="bodyContent">'+
+                            array_data[i]['description'] 
+                            '</div>';    
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infoWindow.open(map,marker);
+                    });
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
             });
-
         </script>
 	</body>
 </html>
