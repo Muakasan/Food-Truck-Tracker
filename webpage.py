@@ -23,5 +23,12 @@ def signup():
 def login():
     return render_template('login.html');
 
+@app.route('/_create_user')
+def create_user():
+    str = request.args.get('username', 0, type=string)
+    print(str)
+    
+ 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
