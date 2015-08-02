@@ -1,4 +1,5 @@
 $("#submit-button").click(function(){
+	if ($("#password-input").val()===$("#confirm-password-input").val()){
     alert($("#username-input").val());
 	alert($("#password-input").val());
 	alert($("#confirm-password-input").val());
@@ -18,10 +19,11 @@ $("#submit-button").click(function(){
         success: function(data){alert(data);},
         failure: function(errMsg) {
             alert(errMsg);
-        }
-		
-        
-	});
-    
+        }});
 	window.location.replace("/");
+
+
+}
+else
+{alert("Passwords do not match")}
 });
