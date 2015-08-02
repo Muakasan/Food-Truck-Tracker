@@ -4,10 +4,18 @@ from bson.json_util import dumps
 #from json import stringify
 dictionary = {}
 app = Flask(__name__, static_folder='/home/muakasan/Documents/Food-Truck-Tracker/static')
+app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
 
 @app.route('/')
 def home():
+    sumSessionCounter()
     return render_template('index.html')
+
+def sumSessionCounter():
+  try:
+    session['counter'] += 1
+  except KeyError:
+    session['counter'] = 1
 
 @app.route('/home')
 def returnHome():
@@ -22,9 +30,10 @@ def getArray():
     truck_list = getTrucks() 
     return dumps(truck_list)
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html');
+@app.route('/myprofile')
+def myprofile():
+    myprofile = getMyProfile("Username")
+    return render_template('myprofile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["foodTruckName"])
 
 @app.route('/signup', methods=["POST"])
 def signup_form_post():
