@@ -4,8 +4,8 @@ $("location-btn").click(function(){
 		type: 'POST',
         data:JSON.stringify({
             username: "username",
-        	x: $("#username-input").val(),
-        	y: $("#password-input").val()
+        	x: position.coords.latitude,
+        	y: position.coords.longitude
         }),        
         contentType: 'application/json;charset=UTF-8',
         success: function(data){alert(data);},
