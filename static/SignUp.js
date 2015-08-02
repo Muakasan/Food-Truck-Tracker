@@ -20,11 +20,12 @@ $("#submit-button").click(function(){
         contentType: 'application/json;charset=UTF-8',
         success: function(data){
         	alert(data);
+
         	$.initNameSpaceStorage("food-truck-finder"):
-        	storage - $.localStorage;
+        	storage = $.localStorage;
         	storage.set("username", username)
         	storage.remove("username")
-        	storage.get("get")
+        	storage.get("username")
 
         },
         failure: function(errMsg) {
