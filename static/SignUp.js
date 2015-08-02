@@ -2,6 +2,10 @@ $("#submitButton").click(function(){
 	window.location.replace("../templates/index.html");
 }
 $("#submitButton").click(function(){
-	alert($("#input").val());
+	alert($("#username-input").val());
+	alert($("#password-input").val());
+	alert($("#username-input").val());
+	alert($("#username-input").val());
+	alert($("#username-input").val());
 	window.alert("You have successfully signed up!")
 }
