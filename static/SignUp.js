@@ -4,7 +4,7 @@ $("#submit-button").click(function(){
 	alert($("#confirm-password-input").val());
 	alert($("#food-truck-name-input").val());
 	$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-	$.getJSON($SCRIPT_ROOT + '/_create_user', {
+	$.getJSON('_create_user', {
 	    username: $("#username-input").val(),
 	}
 	window.location.replace("/");
