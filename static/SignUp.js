@@ -3,9 +3,16 @@ $("#submit-button").click(function(){
 	alert($("#password-input").val());
 	alert($("#confirm-password-input").val());
 	alert($("#food-truck-name-input").val());
+	/*
 	$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 	$.getJSON('_create_user', {
 	    username: $("#username-input").val(),
 	}
+	*/
+	$.ajax({
+		url: '_create_user',
+		method: 'POST',
+		data: { username: $("#username-input").val()}
+	})
 	window.location.replace("/");
 });
