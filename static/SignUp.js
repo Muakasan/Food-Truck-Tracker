@@ -13,7 +13,12 @@ $("#submit-button").click(function(){
 	$.ajax({
 		url: 'http://localhost:5000/_create_user',
 		type: 'POST',
-        data:JSON.stringify({ username: $("#username-input").val()}),        
+        data:JSON.stringify({
+        	username: $("#username-input").val(),
+        	password: $("#password-input").val(),
+        	foodTruckName: $("#food-truck-name-input").val(),
+        	description: $("#description-input").val()
+        }),        
         contentType: 'application/json;charset=UTF-8',
         success: function(data){alert(data);},
         failure: function(errMsg) {

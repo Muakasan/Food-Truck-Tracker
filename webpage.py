@@ -1,6 +1,7 @@
 from flask import render_template, Flask, request, json, jsonify
+from database import createFoodTruck2
 dictionary = {}
-app = Flask(__name__, static_folder='/Users/Main_Account/Documents/Homework/Food-Truck-Tracker/static')
+app = Flask(__name__, static_folder='/home/muakasan/Documents/Food-Truck-Tracker/static')
 
 @app.route('/')
 def home():
@@ -34,7 +35,9 @@ def login():
 def _create_user():
     #print("asdfasfa");
     # Get the parsed contents of the form data
+
     json = request.json
+    createFoodTruck2(json)
     print(json["username"])
 
     #print(json)
