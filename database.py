@@ -30,4 +30,7 @@ def updateFoodTruck(username, ):
 '''
 def updateFoodTruckLocation(username, x, y):
 	food_truck = food_trucks.find_one({"username": username})
+    food_truck.x = x
+    food_truck.y = y
+    food_trucks.insert(food_truck)
 

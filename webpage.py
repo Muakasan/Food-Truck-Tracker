@@ -44,5 +44,11 @@ def _create_user():
     # Render template
     return jsonify(json)
     
+    
+@app.route('/_update_location', methods=["POST"])
+def _update_location():
+    json = request.json
+    updateFoodTruckLocation(json["username"], json["x"], json["y"])
+                                         
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
