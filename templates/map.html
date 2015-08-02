@@ -34,6 +34,7 @@
             var x = document.getElementById("coords");
             var lat = 0
             var long = 0
+
             function getLocation() {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(showPosition);
@@ -48,7 +49,7 @@
                 long = position.coords.longitude;
             }
             getLocation()
-            
+            var myMap;
             function initialize() {
                 //var position = navigator.geolocation.getCurrentPosition()
                 var mapOptions = {   
@@ -56,38 +57,25 @@
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     zoom:18
                 }
-                var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                myMap = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                
                 var initialLocation = null;
                 if(navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
                         initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                        map.setCenter(initialLocation);
+                        myMap.setCenter(initialLocation);
                         var marker = new google.maps.Marker({
                             position: initialLocation,
-                            map: map,
+                            map: myMap
                             //label: "Hello world!"
                         });
                     });
-                }   
-                //console.log(initialLocation);
-          
-            }
-            /*
-            $(document).ready(function() {
-                alert('lel')
-                var request = $.ajax({
-                    type: "POST",
-                    url: "/truck_array/",
-                    data: {"name":""}, // if you wanted to specifiy what list then pass an actual name
-                    dataType: "html"
-                });
 
-                request.done(function(JSON_array) {
-                    array_data = JSON.parse(JSON_array)["array"]
-                    //from here you have your array to play with
-                });
-            });
-            */
+                } 
+                  
+                console.log(initialLocation);
+                google.maps.event.addDomListener(window, 'load', initialize);
+            }
             
              $(document).ready(function() {
                 alert('lel')
@@ -106,12 +94,13 @@
                     {
                         alert(array_data[i]["food_truck_name"])
                     }
+
                     //from here you have your array to play with
                     for(i=0;i<array_data.length;i++)
                     {
                         var marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(array_dat[i]['x'], array_data[i]['y']),
-                            map: map,
+                            position: new google.maps.LatLng(array_data[i]['x'], array_data[i]['y']),
+                            map: myMap,
                             title: 'sdhfaioha'
                         });
                         var contentString = '<div id="content">'+
@@ -126,10 +115,11 @@
                         });
                         google.maps.event.addListener(marker, 'click', function() {
                             infoWindow.open(map,marker);
-                    });
-                }
-                google.maps.event.addDomListener(window, 'load', initialize);
+                        });
+                    }
+                });
             });
+            google.maps.event.addDomListener(window, 'load', initialize);
         </script>
 	</body>
 </html>
