@@ -38,14 +38,13 @@ def myprofile():
 @app.route('/signup')
 def signup():
     return render_template("signup.html")
-
-
+'''
 @app.route('/signup', methods=["POST"])
-def signup_form_post():
+def form():
     text = request.form["text"]
     processed_text = processed_text
     return processed_text
-
+'''
 @app.route('/login')
 def login():
     return render_template('login.html');

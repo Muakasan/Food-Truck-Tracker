@@ -2,15 +2,19 @@
 <html>
     <head>
         <link rel="shortcut icon" href="http://foodwallpaper.info/wp-content/uploads/2014/09/food-truck-clip-art.png">
+        <nav class="navbar navbar-default">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>	
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="../static/jquery.storageapi.min.js"></script>	
         <link rel="stylesheet" href="../static/bootstrap-3.3.5-dist/css/bootstrap.css">
 	   <title>Sign Up</title>
+    </nav>
     </head>
     <body>
         <div class="container">
             <div class="row">
                 <h1>Sign Up</h1>
-                <form method="get" action="{{ url_for('form') }}">
+                <!--<form method="post" action="{{ url_for('signup') }}">-->
                     <h3 class="text-left"> Username:</h3>
                     <input id="username-input" name="username" type="text" />
                     <h3 class="text-left">Password:</h3>
@@ -22,8 +26,8 @@
                     <h3 class="text-left">Description:</h3>
                     <input id="description-input" type="text" /><br>
                     <br><br>
-                    <input id='submit-button' type="submit" />
-                </form>
+                    <button id='submit-button' type="button">Submit</button>
+               <!-- </form> -->
                 <script src="../static/SignUp.js"></script>
             </div>
         </div>
