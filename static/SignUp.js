@@ -9,10 +9,19 @@ $("#submit-button").click(function(){
 	    username: $("#username-input").val(),
 	}
 	*/
+    
 	$.ajax({
-		url: '_create_user',
-		method: 'POST',
-		data: { username: $("#username-input").val()}
-	})
+		url: 'http://localhost:5000/_create_user',
+		type: 'POST',
+        data:JSON.stringify({ username: $("#username-input").val()}),        
+        contentType: 'application/json;charset=UTF-8',
+        success: function(data){alert(data);},
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+		
+        
+	});
+    
 	window.location.replace("/");
 });
