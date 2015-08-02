@@ -4,8 +4,7 @@ $("#submitButton").click(function(){
 $("#submitButton").click(function(){
 	alert($("#username-input").val());
 	alert($("#password-input").val());
-	alert($("#username-input").val());
-	alert($("#username-input").val());
-	alert($("#username-input").val());
+	alert($("#confirm-password-input").val());
+	alert($("#foodtruck-name-input").val());
 	window.alert("You have successfully signed up!")
 }
