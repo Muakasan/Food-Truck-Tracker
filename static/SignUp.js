@@ -13,7 +13,7 @@ $("#submit-button").click(function(){
         data:JSON.stringify({
         	username: $("#username-input").val(),
         	password: $("#password-input").val(),
-        	foodTruckName: $("#food-truck-name-input").val(),
+        	food_truck_name: $("#food-truck-name-input").val(),
         	description: $("#description-input").val()
         }),        
         contentType: 'application/json;charset=UTF-8',
@@ -22,7 +22,7 @@ $("#submit-button").click(function(){
             alert(errMsg);
         }});
 	window.location.replace("/");
-
+	
 
 }
 else

@@ -120,6 +120,7 @@
                 });
             });
             */
+            
               $(document).ready(function() {
                 alert('lel')
                 var request = $.ajax({
@@ -132,14 +133,17 @@
                 request.done(function(JSON_array_string) {
                     //alert(JSON_array);
                     array_data = JSON.parse(JSON_array_string)
-
+                    //alert(array_data)
+                    /*
                     for(i=0; i<array_data.length; i++)
                     {
                         alert(array_data[i]["food_truck_name"])
                     }
+                    */
                     //from here you have your array to play with
                 });
             });
+
         </script>
 	</body>
 </html>

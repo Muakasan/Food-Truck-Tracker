@@ -1,4 +1,4 @@
-from flask import render_template, Flask, request, json, jsonify
+from flask import render_template, Flask, request, json, jsonify, session
 from database import *
 from bson.json_util import dumps
 #from json import stringify
@@ -33,7 +33,12 @@ def getArray():
 @app.route('/myprofile')
 def myprofile():
     myprofile = getMyProfile("Username")
-    return render_template('myprofile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["foodTruckName"])
+    return render_template('myprofile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["food_truck_name"])
+
+@app.route('/signup')
+def signup():
+    return render_template("signup.html")
+
 
 @app.route('/signup', methods=["POST"])
 def signup_form_post():
@@ -49,22 +54,13 @@ def login():
 def login_post():
     return 
 '''
-def login():
-    return render_template('login.html');
-
-@app.route('/myprofile')
-def myprofile():
-    myprofile = getMyProfile("Username")
-    return render_template('myprofile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["food_truck_name"])
 
 @app.route('/_create_user', methods=["POST"])
 def _create_user():
-    print("nlej")
     json = request.json
     createFoodTruck(json)
-    #return jsonify(json)
     return "blank"
-    
+
 @app.route('/_update_location', methods=["POST"])
 def _update_location():
     json = request.json

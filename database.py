@@ -29,10 +29,16 @@ def updateFoodTruck(username, ):
       }
     }, upsert=False)
 '''
+
+def verifyUser(username, password):
+    if food_trucks.find({"username": username, "password":password}):
+        return True
+    return False
+
 def updateFoodTruckLocation(username, x, y):
     food_truck = food_trucks.find_one({"username": username})
-    food_truck.x = x
-    food_truck.y = y
+    food_truck.loc[0] = x
+    food_truck.loc[1] = y
     food_trucks.insert(food_truck)
 
 def getMyProfile(username):
