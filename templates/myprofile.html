@@ -2,27 +2,29 @@
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="../static/bootstrap-3.3.5-dist/css/bootstrap.css">
 	<title>My Profile</title>
 </head>
-<body>
-	<h1>My Profile</h1>
+<div class="container">
+<div class="row">
+<div class="col-lg-4 col-lg-offset-4"></div>
+<div class="col-lg-4">
+<h1 class="text-center">My Profile</h1>
+
+<h3 class="text-left">Username</h3>
 <p>
-	Username
+	{{username}}
 </p>
-<p>
-	{{ username }}
-</p>
-<p>
-	Food Truck Name
-</p>
+<h3 class="text-left">Food Truck Name</h3>
 <p>
 	{{food_truck_name}}
 </p>
-<p>
-	Description
-</p>
+<h3 class="text-left">Description</h3>
 <p>
 	{{description}}
 </p>
+
+</div>
+</div>
 </body>
 </html>
