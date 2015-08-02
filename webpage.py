@@ -23,10 +23,12 @@ def signup():
 def login():
     return render_template('login.html');
 
-@app.route('/_create_user')
-def create_user():
-    str = request.args.get('username', 0, type=string)
-    print(str)
+@app.route('/_create_user', methods=["POST"])
+    # Get the parsed contents of the form data
+    json = request.json
+    print(json)
+    # Render template
+    return jsonify(json)
     
  
 
