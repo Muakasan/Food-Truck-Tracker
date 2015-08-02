@@ -30,21 +30,28 @@ def signup_form_post():
 @app.route('/login')
 def login():
     return render_template('login.html');
-
-@app.route('/_create_user', methods=["POST"])
+ 
 def _create_user():
     #print("asdfasfa");
     # Get the parsed contents of the form data
-
     json = request.json
-    createFoodTruck2(json)
-    print(json["username"])
-
+     print('username:', json['username'])
+    print('password:', json['password'])
+    print('description:', json['description'])
+    print('x:', json['x'])
+    print('y:', json['y'])
+    
     #print(json)
     # Render template
     return jsonify(json)
     
- 
-
+@app.route('_update_location', methods=["POST"])
+def _update_location():
+    json = request.json
+    print('username:', json['username'])
+    print('password:', json['password'])
+    print('description:', json['description'])
+    print('x:', json['x'])
+    print('y:', json['y'])
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
