@@ -7,3 +7,6 @@ $("#sign-up-button").click(function(){
 $("#view-map-button").click(function(){
 	window.location.replace("map");
 });
+$("#myprofile-button").click(function(){
+    window.location.replace("myprofile");
+});
