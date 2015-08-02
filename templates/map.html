@@ -2,6 +2,7 @@
 <html>
 	<head>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <link rel="stylesheet" href="../static/bootstrap-3.3.5-dist/css/bootstrap.css">
         <!-- <script>
             var x = document.getElementById("coords");
@@ -100,8 +101,45 @@
                 google.maps.event.addListener(marker, 'click', function() {
                     infoWindow.open(map,marker);
                 });
+          
             }
             google.maps.event.addDomListener(window, 'load', initialize);
+            /*
+            $(document).ready(function() {
+                alert('lel')
+                var request = $.ajax({
+                    type: "POST",
+                    url: "/truck_array/",
+                    data: {"name":""}, // if you wanted to specifiy what list then pass an actual name
+                    dataType: "html"
+                });
+
+                request.done(function(JSON_array) {
+                    array_data = JSON.parse(JSON_array)["array"]
+                    //from here you have your array to play with
+                });
+            });
+            */
+              $(document).ready(function() {
+                alert('lel')
+                var request = $.ajax({
+                    type: "POST",
+                    url: "/truck_array",
+                    data: {"name":""}, // if you wanted to specifiy what list then pass an actual name
+                    dataType: "html"
+                });
+
+                request.done(function(JSON_array_string) {
+                    //alert(JSON_array);
+                    array_data = JSON.parse(JSON_array_string)
+
+                    for(i=0; i<array_data.length; i++)
+                    {
+                        alert(array_data[i]["food_truck_name"])
+                    }
+                    //from here you have your array to play with
+                });
+            });
         </script>
 	</body>
 </html>

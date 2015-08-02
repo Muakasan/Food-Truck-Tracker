@@ -1,9 +1,5 @@
 $("#submit-button").click(function(){
 	if ($("#password-input").val()===$("#confirm-password-input").val()){
-    alert($("#username-input").val());
-	alert($("#password-input").val());
-	alert($("#confirm-password-input").val());
-	alert($("#food-truck-name-input").val());
 	/*
 	$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 	$.getJSON('_create_user', {
@@ -12,7 +8,7 @@ $("#submit-button").click(function(){
 	*/
     
 	$.ajax({
-		url: 'http://localhost:5000/_create_user',
+		url: 'http://10.180.0.60:5000/_create_user',
 		type: 'POST',
         data:JSON.stringify({
         	username: $("#username-input").val(),

@@ -4,7 +4,10 @@ db = client.food_truck_database
 food_trucks = db.food_trucks
 
 def createFoodTruck(json):
+    print(json["username"])
+    print("ayyy")
     food_trucks.insert(json)
+    print("meh")
 '''
 def updateFoodTruck(username, ):
     food_trucks.update_one({
@@ -34,3 +37,6 @@ def updateFoodTruckLocation(username, x, y):
 
 def getMyProfile(username):
     return food_trucks.find_one({"username": username})
+
+def getTrucks():
+    return food_trucks.find(projection={'_id': False, 'password': False, 'username':False})

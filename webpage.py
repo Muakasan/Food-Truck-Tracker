@@ -1,21 +1,26 @@
 from flask import render_template, Flask, request, json, jsonify
 from database import *
+from bson.json_util import dumps
+#from json import stringify
 dictionary = {}
 app = Flask(__name__, static_folder='/home/muakasan/Documents/Food-Truck-Tracker/static')
 
 @app.route('/')
 def home():
-    #return 'Index page'
-    print("hello world")
     return render_template('index.html')
 
 @app.route('/home')
 def returnHome():
-    return render_template('index.html');
+    return render_template('index.html')
 
 @app.route('/map')
 def map():
-    return render_template('map.html');
+    return render_template('map.html')
+
+@app.route('/truck_array', methods=["POST"])
+def getArray():
+    truck_list = getTrucks() 
+    return dumps(truck_list)
 
 @app.route('/signup')
 def signup():
@@ -30,25 +35,26 @@ def signup_form_post():
 @app.route('/login')
 def login():
     return render_template('login.html');
+'''
+@app.route('/login', methods=["POST"])
+def login_post():
+    return 
+'''
+def login():
+    return render_template('login.html');
 
 @app.route('/myprofile')
 def myprofile():
     myprofile = getMyProfile("Username")
-    return render_template('myprofile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["foodTruckName"])
+    return render_template('myprofile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["food_truck_name"])
 
 @app.route('/_create_user', methods=["POST"])
 def _create_user():
-    #print("asdfasfa");
-    # Get the parsed contents of the form data
-
+    print("nlej")
     json = request.json
     createFoodTruck(json)
-    print(json["username"])
-
-    #print(json)
-    # Render template
-    return jsonify(json)
-    
+    #return jsonify(json)
+    return "blank"
     
 @app.route('/_update_location', methods=["POST"])
 def _update_location():
