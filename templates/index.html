@@ -1,43 +1,36 @@
+<!--Nav in body or head?-->
 <!DOCTYPE html>
 <html>
 <head>
-        <link rel="shortcut icon" href="http://foodwallpaper.info/wp-content/uploads/2014/09/food-truck-clip-art.png">
-	<nav class="navbar navbar-default">
-        <button class="btn btn-info btn-lg btn-margin" id= "home-button" type="button">Home</button>
-        <title>Thyme4Food</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="shortcut icon" href="http://foodwallpaper.info/wp-content/uploads/2014/09/food-truck-clip-art.png">
+    <title>Thyme4Food</title>
+	<script src="../static/jquery-1.11.3.min.js"></script>
 	<link rel="stylesheet" href="../static/bootstrap-3.3.5-dist/css/bootstrap.css">
 	<style type='text/css'>
-		.col-lg-4{
+		.button-margin{
 			margin-bottom:10px;
 		}
 	</style>
-        </nav>
 </head>
-
-<body>
-
-<div class="container">
-<h1 class="text-center">Thyme4Food</h1>
-<div class="row">
-
-<h3 class="text-center">Find a Food Truck near you</h3>
-<br><br>
-<div class="col-lg-3 col-sm-12 text-center">
-<button class="btn btn-primary btn-block btn-lg" id= "sign-up-button" type="button" >Sign Up</button>
-</div>
-<div class="col-lg-3 col-sm-12 text-center">
-<button class="btn btn-success btn-block btn-lg btn-margin" id= "login-button" type="button">Login</button>
-</div>
-<div class="col-lg-3 col-sm-12 text-center">
-<button class="btn btn-success btn-block btn-lg btn-margin" id= "myprofile-button" type="button">My Profile</button>
-</div>
-<div class="col-lg-3 col-sm-12 text-center">
-
-<button class="btn btn-info btn-block btn-lg btn-margin" id= "view-map-button" type="button">View Map</button>
-</div>
-<script src="../static/Index.js"></script>
-
+	<div class="container">
+		<h1 class="text-center">Thyme4Food</h1>
+		<div class="row">
+			<h3 class="text-center">Find a Food Truck near you</h3>
+			<br><br>
+			<div class="col-lg-3 col-sm-12 text-center button-margin">
+				<button class="btn btn-primary btn-block btn-lg" id= "sign-up-button" type="button" >Sign Up</button>
+			</div>
+			<div class="col-lg-3 col-sm-12 text-center button-margin">
+				<button class="btn btn-success btn-block btn-lg btn-margin" id= "login-button" type="button">Login</button>
+			</div>
+			<div class="col-lg-3 col-sm-12 text-center button-margin">
+				<button class="btn btn-success btn-block btn-lg btn-margin" id= "myprofile-button" type="button">My Profile</button>
+			</div>
+			<div class="col-lg-3 col-sm-12 text-center">
+				<button class="btn btn-info btn-block btn-lg button-margin" id= "view-map-button" type="button">View Map</button>
+			</div>
+		</div>
+	</div>
+	<script src="../static/index.js"></script>
 </body>
-
 </html>

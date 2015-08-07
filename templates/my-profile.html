@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="http://foodwallpaper.info/wp-content/uploads/2014/09/food-truck-clip-art.png">
+	<script src="../static/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" href="../static/bootstrap-3.3.5-dist/css/bootstrap.css">
+	<title>My Profile</title>
+</nav>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+    	<button class="btn btn-info btn-lg btn-margin" id= "home-button" type="button">Home</button>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center">My Profile</h1>
+			<div class="col-lg-4">
+				<h3 class="text-left">Username</h3>
+				<p>
+					{{username}}
+				</p>
+				<h3 class="text-left">Food Truck Name</h3>
+				<p>
+					{{food_truck_name}}
+				</p>
+				<h3 class="text-left">Description</h3>
+				<p>
+					{{description}}
+				</p>
+				<button class="btn btn-primary" id="location-button" type="button">Log location</button>
+			</div>
+		</div>
+	</div>
+    <script src="../static/my-profile.js"></script>
+</body>
+</html>

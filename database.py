@@ -36,11 +36,15 @@ def verifyUser(username, password):
     return False
 
 def updateFoodTruckLocation(username, x, y):
-    food_truck = food_trucks.find_one({"username": username})
-    food_truck.loc[0] = x
-    food_truck.loc[1] = y
-    food_trucks.insert(food_truck)
-
+    print("went to database")
+    print(username)
+    print(x)
+    print(y)
+    food_trucks.find_one_and_update({'username': username}, {'$set': {'loc': [x,y]}})
+'''
+def getLocation(username):
+    food_trucks.find({'username':username}, projection={'loc'=True})
+'''
 def getMyProfile(username):
     return food_trucks.find_one({"username": username})
 

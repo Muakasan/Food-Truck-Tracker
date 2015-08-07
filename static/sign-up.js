@@ -7,7 +7,11 @@ $("#submit-button").click(function(){
 	    username: $("#username-input").val(),
 	}
 	*/
-    
+    /*
+    storage = $.initNameSpaceStorage("food-truck-finder");
+    storage.localStorage;
+    storage.set("username", username);
+*/
 	$.ajax({
 		url: 'http://10.180.0.60:5000/_create_user',
 		type: 'POST',
@@ -19,22 +23,28 @@ $("#submit-button").click(function(){
         }),        
         contentType: 'application/json;charset=UTF-8',
         success: function(data){
-        	alert(data);
-
+        	//alert(data);
+/*
         	$.initNameSpaceStorage("food-truck-finder"):
         	storage = $.localStorage;
         	storage.set("username", username)
         	storage.remove("username")
         	storage.get("username")
+*/
 
         },
         failure: function(errMsg) {
-            alert(errMsg);
+            //alert(errMsg);
         }});
 	window.location.replace("/");
 	
 
 }
 else
-{alert("Passwords do not match")}
+{
+    alert("Passwords do not match")}
+});
+
+$("#home-button").click(function(){
+    window.location.replace("/");
 });

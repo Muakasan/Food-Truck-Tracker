@@ -30,14 +30,15 @@ def getArray():
     truck_list = getTrucks() 
     return dumps(truck_list)
 
-@app.route('/myprofile')
+@app.route('/my-profile')
 def myprofile():
-    myprofile = getMyProfile("Username")
-    return render_template('myprofile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["food_truck_name"])
+    myprofile = getMyProfile("tacotruck")
+    return render_template('my-profile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["food_truck_name"])
 
-@app.route('/signup')
+@app.route('/sign-up')
 def signup():
-    return render_template("signup.html")
+    print("test")
+    return render_template("sign-up.html")
 '''
 @app.route('/signup', methods=["POST"])
 def form():
@@ -63,6 +64,8 @@ def _create_user():
 @app.route('/_update_location', methods=["POST"])
 def _update_location():
     json = request.json
+    print(json["x"])
+    print(json["y"])
     updateFoodTruckLocation(json["username"], json["x"], json["y"])
                                          
 if __name__ == '__main__':

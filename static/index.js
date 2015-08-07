@@ -2,11 +2,11 @@ $("#login-button").click(function(){
 	window.location.replace("login");
 });
 $("#sign-up-button").click(function(){
-	window.location.replace("signup");
+	window.location.replace("sign-up");
 });
 $("#view-map-button").click(function(){
 	window.location.replace("map");
 });
 $("#myprofile-button").click(function(){
-    window.location.replace("myprofile");
+    window.location.replace("my-profile");
 });

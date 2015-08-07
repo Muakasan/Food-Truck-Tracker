@@ -1,3 +1,4 @@
+/*
 $("#submit-button").click(function(){
 	window.location.replace("../templates/index.html");
     username = $("#username-input").val()
@@ -14,3 +15,7 @@ $("#submit-button").click(function(){
             alert(errMsg);
         }});
 }
+*/
+$("#home-button").click(function(){
+    window.location.replace("/");
+});

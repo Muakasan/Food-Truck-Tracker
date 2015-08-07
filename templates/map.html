@@ -2,7 +2,7 @@
 <html>
 	<head>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="../static/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../static/bootstrap-3.3.5-dist/css/bootstrap.css">
         <!-- <script>
             var x = document.getElementById("coords");
@@ -28,9 +28,16 @@
         </style>
 	</head>
 	<body>
+        <nav class="navbar navbar-default">
+            <button class="btn btn-info btn-lg btn-margin" id= "home-button" type="button">Home</button>
+        </nav>
         <div id="coords"></div>
         <div id="map-canvas"></div>
         <script>
+            $("#home-button").click(function(){
+                window.location.replace("/");
+            });
+            
             var x = document.getElementById("coords");
             var lat = 0
             var long = 0
@@ -66,19 +73,18 @@
                         myMap.setCenter(initialLocation);
                         var marker = new google.maps.Marker({
                             position: initialLocation,
-                            map: myMap
-                            //label: "Hello world!"
+                            map: myMap,
+                            label: "Me"
                         });
                     });
 
                 } 
                   
                 console.log(initialLocation);
-                google.maps.event.addDomListener(window, 'load', initialize);
+                //google.maps.event.addDomListener(window, 'load', initialize);
             }
             
              $(document).ready(function() {
-                alert('lel')
                 var request = $.ajax({
                     type: "POST",
                     url: "/truck_array",
@@ -88,34 +94,52 @@
 
                 request.done(function(JSON_array_string) {
                     //alert(JSON_array);
-                    array_data = JSON.parse(JSON_array_string)
+               
+                    array_data = JSON.parse(JSON_array_string);
 
-                    for(i=0; i<array_data.length; i++)
-                    {
-                        alert(array_data[i]["food_truck_name"])
-                    }
-
+                 
                     //from here you have your array to play with
                     for(i=0;i<array_data.length;i++)
                     {
+                        if(array_data[i].hasOwnProperty("loc")){
                         var marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(array_data[i]['x'], array_data[i]['y']),
+                            position: new google.maps.LatLng(parseFloat(array_data[i].loc[0]), parseFloat(array_data[i].loc[1])),
                             map: myMap,
-                            title: 'sdhfaioha'
+                            title: i +""
                         });
-                        var contentString = '<div id="content">'+
-                            '<div id="siteNotice">'+
-                            '</div>'+
-                            '<h1 id="firstHeading" class="firstHeading">' + array_data[i]['food_truck_name'] + '</h1>'+
-                            '<div id="bodyContent">'+
-                            array_data[i]['description'] 
-                            '</div>';    
+                        var html = $("<div>", {"id":"content"+i}).append(
+                                                $("<h4>", {"text":array_data[i].food_truck_name}),
+                                                $("<p>", {"text":array_data[i].description}))
+                        var infowindow = new google.maps.InfoWindow({
+                          content: html.prop("outerHTML")
+                          });
+
+                        google.maps.event.addListener(marker, 'click', function() {
+                            infowindow.open(myMap,marker);
+                        });
+                        }
+                        /*
+                        google.maps.event.addListener(marker, 'click', function() {
+                          infowindow.open(map,marker);
+                          });
+                        }
+
+                        var contentString = "<p>Finish</p>";
+                        /*
+                        $("<div>", {"id":"content"+i}).append(
+                                                $("<h4>", {"text":array_data[i].food_truck_name}),
+                                                $("<p>", {"text":array_data[i].description})).toString();
+                        */
+                        /*
                         var infoWindow = new google.maps.InfoWindow({
                             content: contentString
                         });
-                        google.maps.event.addListener(marker, 'click', function() {
+                          
+                            google.maps.event.addListener(marker, 'click', function() {
                             infoWindow.open(map,marker);
                         });
+*/
+                   // }
                     }
                 });
             });
