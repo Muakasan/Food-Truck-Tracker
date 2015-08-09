@@ -1,10 +1,11 @@
+/*
 var sendPosition = function(position){
     window.location.replace("/");
     $.ajax({
-        url: 'http://10.180.0.60:5000/_update_location',
+        url: '/_update_location',
         type: 'POST',
         data:JSON.stringify({
-            username: "tacotruck",
+            username: {{session['username']}},
             x: position.coords.latitude,
             y: position.coords.longitude
         }),        
@@ -15,6 +16,7 @@ var sendPosition = function(position){
         }});
     
 }
+*/
 $("#location-button").click(function(){
         navigator.geolocation.getCurrentPosition(sendPosition)
 });

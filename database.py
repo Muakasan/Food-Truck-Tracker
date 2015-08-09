@@ -31,6 +31,7 @@ def updateFoodTruck(username, ):
 '''
 
 def verifyUser(username, password): #broken
+    print(food_trucks.find_one({"username": username, "password":password}))
     if food_trucks.find_one({"username": username, "password":password}):
         return True
     return False

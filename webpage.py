@@ -61,9 +61,13 @@ def login_post():
 @app.route('/form', )
 def form():
     if request.args.get('username'):
+        print("found username")
         username = request.args.get('username')
         password = request.args.get('password')
+        print(username)
+        print(password)
         if verifyUser(username, password):
+            print("veridfied")
             myprofile = getMyProfile(username)
             session['username'] = username
             session['food-truck-name'] = myprofile['food_truck_name']
@@ -71,7 +75,7 @@ def form():
     return render_template("index.html")
 
 @app.route('/_create_user', methods=["POST"])
-def _create_user():
+def createUser():
     json = request.json
     createFoodTruck(json)
     return "blank"
@@ -82,6 +86,7 @@ def _update_location():
     print(json["x"])
     print(json["y"])
     updateFoodTruckLocation(json["username"], json["x"], json["y"])
+    return "test"
                                          
 @app.route("/logout")
 def logout():

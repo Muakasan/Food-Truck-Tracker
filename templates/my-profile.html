@@ -10,7 +10,7 @@
 <body>
 	<nav class="navbar navbar-default">
     	<button class="btn btn-info btn-lg" id="home-button" type="button">Home</button>
-		<button class="btn btn-info btn-lg" id="logout-button" type="button">Logout</button> <!--chnge color later, move to right-->
+		<button class="btn btn-danger btn-lg" id="logout-button" type="button" style="float:right;">Logout</button>
 	</nav>
 	<div class="container">
 		<div class="row">
@@ -36,6 +36,26 @@
 			</div>
 		</div>
 	</div>
+	    <script>
+    var sendPosition = function(position){
+    //window.location.replace("/");
+    $.ajax({
+        url: '/_update_location',
+        type: 'POST',
+        data:JSON.stringify({
+            username: "{{session['username']}}",
+            x: position.coords.latitude,
+            y: position.coords.longitude
+        }),        
+        contentType: 'application/json;charset=UTF-8',
+        success: function(data){alert(data);},
+        failure: function(errMsg) {
+            alert(errMsg);
+        }});
+    
+}
+</script>
     <script src="../static/my-profile.js"></script>
+
 </body>
 </html>
