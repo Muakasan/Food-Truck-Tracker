@@ -1,4 +1,4 @@
-from flask import render_template, Flask, request, json, jsonify, session
+from flask import render_template, Flask, request, json, jsonify, session, redirect, url_for
 from database import *
 from bson.json_util import dumps
 #from json import stringify
@@ -32,13 +32,14 @@ def getArray():
 
 @app.route('/my-profile')
 def myprofile():
-    myprofile = getMyProfile("tacotruck")
-    return render_template('my-profile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["food_truck_name"])
-
+    #myprofile = getMyProfile("tacotruck")
+    #return render_template('my-profile.html', username=myprofile["username"], description=myprofile["description"], food_truck_name=myprofile["food_truck_name"])
+    return render_template('my-profile.html')
 @app.route('/sign-up')
 def signup():
     print("test")
     return render_template("sign-up.html")
+
 '''
 @app.route('/signup', methods=["POST"])
 def form():
@@ -52,8 +53,22 @@ def login():
 '''
 @app.route('/login', methods=["POST"])
 def login_post():
-    return 
+    if request.args.get('username'):
+        print('username: '+ request.args.get('username'))
+        session['username']= request.args.get('username')
+    return redirect(url_for("home"))
 '''
+@app.route('/form', )
+def form():
+    if request.args.get('username'):
+        username = request.args.get('username')
+        password = request.args.get('password')
+        if verifyUser(username, password):
+            myprofile = getMyProfile(username)
+            session['username'] = username
+            session['food-truck-name'] = myprofile['food_truck_name']
+            session['description'] = myprofile['description']
+    return render_template("index.html")
 
 @app.route('/_create_user', methods=["POST"])
 def _create_user():
@@ -68,5 +83,10 @@ def _update_location():
     print(json["y"])
     updateFoodTruckLocation(json["username"], json["x"], json["y"])
                                          
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

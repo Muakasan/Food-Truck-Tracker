@@ -9,25 +9,30 @@
 </head>
 <body>
 	<nav class="navbar navbar-default">
-    	<button class="btn btn-info btn-lg btn-margin" id= "home-button" type="button">Home</button>
+    	<button class="btn btn-info btn-lg" id="home-button" type="button">Home</button>
+		<button class="btn btn-info btn-lg" id="logout-button" type="button">Logout</button> <!--chnge color later, move to right-->
 	</nav>
 	<div class="container">
 		<div class="row">
 			<h1 class="text-center">My Profile</h1>
 			<div class="col-lg-4">
+				{% if session['username']%}
 				<h3 class="text-left">Username</h3>
 				<p>
-					{{username}}
+					{{session['username']}}
 				</p>
 				<h3 class="text-left">Food Truck Name</h3>
 				<p>
-					{{food_truck_name}}
+					{{session['food-truck-name']}}
 				</p>
 				<h3 class="text-left">Description</h3>
 				<p>
-					{{description}}
+					{{session['description']}}
 				</p>
 				<button class="btn btn-primary" id="location-button" type="button">Log location</button>
+				{% else %}
+				You are not logged in
+				{% endif %}
 			</div>
 		</div>
 	</div>

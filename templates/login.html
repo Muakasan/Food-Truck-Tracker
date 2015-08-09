@@ -11,20 +11,31 @@
 			<button class="btn btn-info btn-lg btn-margin" id= "home-button" type="button">Home</button>
 		</nav>
 		<div class="container">
+			<!--Add javascript to make close button function and show div when necessary-->
+			<div class="alert alert-danger alert-dismissible" role="alert">
+			 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Invalid ID or Password</strong> Please Try Again
+			</div>
 			<div class="row">
 				<div class="col-lg-4 col-lg-offset-4"></div>
 				<div class="col-lg-4 col-lg-offset-4">
+				<div id="content">
+					<form method="get" action="{{url_for('form')}}">
 					<h1>Login</h1>
 					<h3 class="text-left">Username:</h3>
 
-					<input id="username-input" type="text">
+					<input id="username-input" type="text" name="username">
 
 					<h3 class="text-left">Password:</h3>
 
 					<input id="password-input" type="password">
 					<br><br>
+					<!--
 					<div class="text-left">
 						<button id="submit-button" type="button" class="btn btn-success">Submit</button>
+					</div>-->
+					<input type="submit" class="btn btn-success"/>
+					</form>
 					</div>
 				</div>
 			</div>

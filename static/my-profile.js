@@ -22,3 +22,7 @@ $("#location-button").click(function(){
 $("#home-button").click(function(){
     window.location.replace("/");
 });
+
+$("#logout-button").click(function(){
+    window.location.replace("logout")
+})

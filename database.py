@@ -30,8 +30,8 @@ def updateFoodTruck(username, ):
     }, upsert=False)
 '''
 
-def verifyUser(username, password):
-    if food_trucks.find({"username": username, "password":password}):
+def verifyUser(username, password): #broken
+    if food_trucks.find_one({"username": username, "password":password}):
         return True
     return False
 
@@ -46,7 +46,7 @@ def getLocation(username):
     food_trucks.find({'username':username}, projection={'loc'=True})
 '''
 def getMyProfile(username):
-    return food_trucks.find_one({"username": username})
+    return food_trucks.find_one({"username": username}, projection={'_id:': False, 'password': False, 'username': False})
 
 def getTrucks():
     return food_trucks.find(projection={'_id': False, 'password': False, 'username':False})
