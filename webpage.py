@@ -3,7 +3,7 @@ from database import *
 from bson.json_util import dumps
 #from json import stringify
 dictionary = {}
-app = Flask(__name__, static_folder='/static/')
+app = Flask(__name__, static_folder='static')
 app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
 
 @app.route('/')
